@@ -12,6 +12,8 @@ namespace APIRestBundle\Controller;
 use FOS\RestBundle\Controller\FOSRestController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Nelmio\ApiDocBundle\Annotation as Doc;
+use UserBundle\Entity\User;
 
 
 /**
@@ -23,7 +25,15 @@ class RestUserController extends FOSRestController
     /**
      *
      * @Rest\Get("/", name="agenda_api_users")
-     * @return array
+     *
+     * @Doc\ApiDoc(
+     *     section="User",
+     *     resource=true,
+     *     description="Get the list of all users.",
+     *     statusCodes={
+     *          200="Returned when successful",
+     *     }
+     * )
      */
     public function getUsersAction()
     {
