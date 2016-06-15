@@ -16,11 +16,13 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new AppBundle\AppBundle(),
             new UserBundle\UserBundle(),
             new PostBundle\PostBundle(),
             new ContactBundle\ContactBundle(),
+            new APIRestBundle\APIRestBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

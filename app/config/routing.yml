@@ -1,3 +1,8 @@
+api_rest:
+    resource: "@APIRestBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 contact:
     resource: "@ContactBundle/Controller/"
     type:     annotation
