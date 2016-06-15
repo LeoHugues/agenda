@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    Home
+{% endblock %}
+{% block body %}
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="img-background col-sm-1 text-center">
+                <img class="logo" src="{{ asset('img/book-icon-large.png') }}">
+            </div>
+            <div class="text-right">
+                <a href="#">
+                    <img src="{{ asset('img/small-settings.png') }}" alt="Settings" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+{% endblock body %}

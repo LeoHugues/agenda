@@ -1,0 +1,19 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="container-fluid col-sm-6 col-sm-offset-2">
+    <div class="col-sm-8 col-sm-offset-4 img-background well margin-top-30 text-center">
+        <img src="{{ asset('img/book-icon-large.png') }}">
+        <h1>BOOK-BOX</h1>
+    </div>
+    <div class="col-lg-offset-2 well col-sm-12 user-form margin-top-30">
+        <div class="margin-top-30">
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                {{ form_widget(form) }}
+                <div>
+                    <input class="btn btn-default" type="submit" value="{{ 'registration.submit'|trans }}" />
+                </div>
+                {{ form_end(form) }}
+        </div>
+    </div>
+</div>
