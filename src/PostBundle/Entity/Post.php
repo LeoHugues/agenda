@@ -2,7 +2,11 @@
 
 namespace PostBundle\Entity;
 
+use ContactBundle\Entity\Discipline;
+use ContactBundle\Entity\Groupe;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\Group;
 
 /**
  * Post
@@ -56,6 +60,43 @@ class Post
      */
     private $priority;
 
+    /**
+     * Tous les commentaires faits pour ce post
+     *
+     * @ORM\OneToMany(targetEntity="Comment")
+     * @ORM\Column(nullable=true)
+     */
+    private $comments;
+
+    /**
+     * Le créateur du post
+     *
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     */
+    private $publisher;
+
+    /**
+     * Le groupe dans lequel le poste a été publié | peut être null
+     *
+     * @ORM\ManyToOne(targetEntity="ContactBundle\Entity\Groupe")
+     * @ORM\Column(nullable=true)
+     */
+    private $groupe;
+
+    /**
+     * Un post peut concerner plusieurs discipline à la fois ex: math / algo / physique.
+     *
+     * @ORM\ManyToMany(targetEntity="ContactBundle\Entity\Discipline")
+     * @ORM\Column(nullable=true)
+     */
+    private $discipline;
+
+
+    public  function __construct()
+    {
+        $this->comments = new ArrayCollection();
+        $this->discipline = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -180,5 +221,85 @@ class Post
     public function getPriority()
     {
         return $this->priority;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param Comment $comment
+     */
+    public function addComments($comment)
+    {
+        $this->comments->add($comment);
+    }
+
+    /**
+     * @param Comment $comment
+     */
+    public function deleteComments($comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublisher()
+    {
+        return $this->publisher;
+    }
+
+    /**
+     * @param mixed $publisher
+     */
+    public function setPublisher($publisher)
+    {
+        $this->publisher = $publisher;
+    }
+
+    /**
+     * @return Groupe
+     */
+    public function getGroupe()
+    {
+        return $this->groupe;
+    }
+
+    /**
+     * @param Groupe $groupe
+     */
+    public function setGroupe($groupe)
+    {
+        $this->groupe = $groupe;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getDiscipline()
+    {
+        return $this->discipline;
+    }
+
+    /**
+     * @param Discipline $discipline
+     */
+    public function addDiscipline($discipline)
+    {
+        $this->discipline->add($discipline);
+    }
+
+    /**
+     * @param Discipline $discipline
+     */
+    public function deleteDiscipline($discipline)
+    {
+        $this->discipline->removeElement($discipline);
     }
 }

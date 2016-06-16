@@ -24,6 +24,13 @@ class Comment
     /**
      * @var string
      *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="text", type="string", length=255)
      */
     private $text;
@@ -38,10 +45,22 @@ class Comment
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updateDate", type="date")
+     * @ORM\Column(name="updateDate", type="date", nullable=true)
      */
     private $updateDate;
 
+    /**
+     * Le créateur du commentaire
+     *
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     */
+    protected $user;
+
+
+    public function __construct()
+    {
+        $this->createDate = new \DateTime();
+    }
 
     /**
      * Get id
@@ -120,5 +139,21 @@ class Comment
     public function getUpdateDate()
     {
         return $this->updateDate;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 }
