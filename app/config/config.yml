@@ -76,31 +76,34 @@ fos_user:
     firewall_name: main
     user_class: UserBundle\Entity\User
 
-# FOSOauthServer
-fos_oauth_server:
-    db_driver: orm       # Drivers available: orm, mongodb, or propel
-    client_class:        APIRestBundle\Entity\Client
-    access_token_class:  APIRestBundle\Entity\AccessToken
-    refresh_token_class: APIRestBundle\Entity\RefreshToken
-    auth_code_class:     APIRestBundle\Entity\AuthCode
-
 # FOSRestBundle
+
 fos_rest:
     param_fetcher_listener: true
     body_listener: true
     format_listener: true
     view:
         view_response_listener: 'force'
+        formats:
+            xml: true
+            json : true
+        templating_formats:
+            html: true
+        force_redirects:
+            html: true
+        failed_validation: HTTP_BAD_REQUEST
+        default_engine: twig
     routing_loader:
         default_format: json
-    access_denied_listener:
-        json: true
-    exception:
-        codes:
-            'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
-            'Doctrine\ORM\OptimisticLockException': HTTP_CONFLICT
-        messages:
-            'Symfony\Component\Routing\Exception\ResourceNotFoundException': true
+    serializer:
+            serialize_null: true
+
+jms_serializer:
+    metadata:
+        directories:
+            FOSUserBundle:
+                namespace_prefix: "FOS\\UserBundle"
+                path: "@UserBundle/Resources/config/serializer"
 
 nelmio_api_doc:
     name:                 'App API documentation'

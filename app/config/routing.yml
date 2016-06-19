@@ -1,17 +1,12 @@
-fos_oauth_server_token:
-    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
-
-fos_oauth_server_authorize:
-    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
-
 nelmio_api_doc:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
     prefix:   /blog-api/doc
 
-api_rest:
-    resource: "@APIRestBundle/Controller/"
-    type:     annotation
-    prefix:   /api
+#app/routing_rest.yml
+Rest_User :
+  type : rest
+  resource: "@APIRestBundle/Resources/config/routing_rest.yml"
+  prefix: /api
 
 contact:
     resource: "@ContactBundle/Controller/"

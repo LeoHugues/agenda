@@ -7,12 +7,18 @@ use ContactBundle\Entity\Groupe;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * User
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
+ *
+ * @ExclusionPolicy("all")
+ *
  */
 class User extends BaseUser
 {
@@ -22,8 +28,20 @@ class User extends BaseUser
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
+     *
      */
     protected $id;
+
+    /**
+     * @Expose
+     */
+    protected $username;
+
+    /**
+     * @Expose
+     */
+    protected $email;
 
     /**
      * Un utilisateur peu faire parti de plusieurs groupes
@@ -31,6 +49,7 @@ class User extends BaseUser
      * @ORM\ManyToMany(targetEntity="ContactBundle\Entity\Groupe", inversedBy="users")
      * @ORM\JoinTable(name="users_groups")
      * @ORM\Column(nullable=true)
+     * @Expose
      */
     private $groupes;
 
@@ -39,6 +58,7 @@ class User extends BaseUser
      *
      * @ORM\ManyToMany(targetEntity="ContactBundle\Entity\Discipline")
      * @ORM\Column(nullable=true)
+     * @Expose
      */
     private $discipline;
 

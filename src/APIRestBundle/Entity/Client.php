@@ -17,6 +17,11 @@ class Client extends BaseClient
      */
     protected $id;
 
+    /**
+     * @ORM\Column(name="name", type="string", nullable=true)
+     */
+    protected $name;
+
     public function __construct()
     {
         parent::__construct();
