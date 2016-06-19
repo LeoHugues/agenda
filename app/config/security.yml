@@ -2,7 +2,9 @@
 # http://symfony.com/doc/current/book/security.html
 security:
     encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
         FOS\UserBundle\Model\UserInterface: bcrypt
+        UserBundle\Entity\User: bcrypt
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
