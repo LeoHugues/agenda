@@ -2,22 +2,65 @@
 {% block title %}
     Home
 {% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('Resources/css/custom-css.css') }}" />
+        {% endblock %}
 {% block body %}
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="img-background col-sm-1 text-center">
-                <img class="logo" src="{{ asset('img/book-icon-large.png') }}">
+    <div class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Book-Box</a>
             </div>
-            <div class="text-right">
-                <a href="#">
-                    <img src="{{ asset('img/small-settings.png') }}" alt="Settings" />
-                </a>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </div>
+            <!-- /.nav-collapse -->
         </div>
+        <!-- /.container -->
     </div>
+    <!-- /.navbar -->
 
-    <div class="container">
-        {% block content %}
-        {% endblock content %}
+    <div class="container-fluid">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+                <div class="sidebar-nav">
+                    <ul class="nav">
+                        <li class="active"><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="nav-divider"></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="nav-divider"></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </div>
+                <!--/.well -->
+            </div>
+            <!--/span-->
+            {% block content %}
+            {% endblock content %}
+
+        </div>
+        <!--/row-->
+
+        <hr>
+
+        <footer>
+            <p>©Book-Box 2016</p>
+        </footer>
+
     </div>
+    <!--/.container-->
 {% endblock body %}

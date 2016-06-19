@@ -2,9 +2,7 @@
 # http://symfony.com/doc/current/book/security.html
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
         FOS\UserBundle\Model\UserInterface: bcrypt
-        UserBundle\Entity\User: bcrypt
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
@@ -29,3 +27,4 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/, role: ROLE_USER }
