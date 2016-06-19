@@ -75,7 +75,7 @@ class RestUserController extends FOSRestController
      * @Doc\ApiDoc(
      *     section="User",
      *     resource=true,
-     *     description="Get user by id.",
+     *     description="check username and password",
      *     statusCodes={
      *          200="Returned when successful",
      *     },
