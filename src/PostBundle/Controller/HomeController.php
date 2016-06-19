@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="post_index_list")
      */
     public function indexAction() {
         return $this->render("PostBundle:Home:index.html.twig");

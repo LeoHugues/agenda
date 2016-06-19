@@ -11,7 +11,7 @@ Rest_User :
 contact:
     resource: "@ContactBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /contact
 
 post:
     resource: "@PostBundle/Controller/"

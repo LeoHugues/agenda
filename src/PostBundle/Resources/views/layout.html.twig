@@ -34,9 +34,9 @@
             <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
                 <div class="sidebar-nav">
                     <ul class="nav">
-                        <li class="active"><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
+                        <li class="active"><a href="{{ path("post_index_list") }}">Accueil</a></li>
+                        <li><a href="{{ path("contact_groupe_list") }}">Liste des groupes</a></li>
+                        <li><a href="{{ path("contact_groupe_add") }}">Ajouter un groupe</a></li>
                         <li class="nav-divider"></li>
                         <li><a href="#">Link</a></li>
                         <li><a href="#">Link</a></li>
@@ -49,18 +49,23 @@
                 <!--/.well -->
             </div>
             <!--/span-->
-            {% block content %}
-            {% endblock content %}
-
+            <div class="col-xs-12 col-sm-9 col-lg-offset-3">
+                <br>
+                {% for messages in app.session.flashbag.all() %}
+                    {% for type, message in messages %}
+                        {% if type == 'notice' %}
+                            <div class="alert alert-dismissible alert-success col-lg-9 flash-bag-masg">
+                                {{ message }}
+                            </div>
+                        {% endif %}
+                        {% endfor %}
+                {% endfor %}
+                <!-- FlashBag message -->
+                {% block content %}
+                {% endblock content %}
+            </div>
         </div>
         <!--/row-->
-
-        <hr>
-
-        <footer>
-            <p>©Book-Box 2016</p>
-        </footer>
-
     </div>
     <!--/.container-->
 {% endblock body %}

@@ -1,0 +1,34 @@
+<?php
+
+namespace ContactBundle\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+
+/**
+ * Created by PhpStorm.
+ * User: leo
+ * Date: 6/19/16
+ * Time: 11:10 AM
+ */
+class GroupeType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('name');
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'ContactBundle\Entity\Groupe',
+        ));
+    }
+    
+    public function getName()
+    {
+        return "contact_groupe_type";
+    }
+}

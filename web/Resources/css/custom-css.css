@@ -43,4 +43,10 @@ footer {
 #sidebar {
     padding:15px;
     margin-top:10px;
+    background: #ecf0f1;
+    min-height: 94vh;
+    position: fixed;}
+
+.nav > li > a {
+    color: #2c3e50;
 }
