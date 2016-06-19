@@ -1,5 +1,42 @@
 {% extends "PostBundle::layout.html.twig" %}
 
 {% block content %}
-    <h1>Kiwi</h1>
+    <div class="well col-lg-12 container">
+        <div class="row">
+            <div class="col-xs-5 pull-left">
+                <h2 class="col-xs-10">Liste des groupes :</h2>
+            </div>
+        </div>
+        <table class="table table-striped">
+            {% if groupes|length > 0  %}
+                <thead>
+                <tr>
+                    <th>Nom du groupe</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for groupe in groupes %}
+                    <tr>
+                        <td>{{ groupe.name }}</td>
+                        <td>
+                            <div class="row-centered">
+                                <div class="col-centered">
+                                    <a href="#">
+                                        <span class="glyphicon glyphicon-wrench btn btn-warning btn-xs"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            {% else %}
+                <br>
+                <div class="alert alert-dismissable alert-info">
+                    Vous ne faites partie d'aucun groupe pour le moment.
+                </div>
+            {% endif %}
+        </table>
+    </div>
 {% endblock content %}

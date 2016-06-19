@@ -48,7 +48,6 @@ class User extends BaseUser
      *
      * @ORM\ManyToMany(targetEntity="ContactBundle\Entity\Groupe", inversedBy="users")
      * @ORM\JoinTable(name="users_groups")
-     * @ORM\Column(nullable=true)
      * @Expose
      */
     private $groupes;

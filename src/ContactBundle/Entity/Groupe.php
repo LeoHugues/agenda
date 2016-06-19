@@ -32,13 +32,11 @@ class Groupe
 
     /**
      * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", mappedBy="groupes")
-     * @ORM\Column(nullable=true)
      */
     private $users;
 
     /**
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")     
-     * @ORM\Column(nullable=false)
      */
     private $admin;
 

@@ -3,6 +3,7 @@
 namespace ContactBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use UserBundle\Entity\User;
 
 /**
  * GroupeRepository
@@ -12,4 +13,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class GroupeRepository extends EntityRepository
 {
+    /**
+     * @param $user User
+     * @return array
+     */
+    public function findByUser(User $user) {
+        $qb = $this->createQueryBuilder('g');
+
+        $qb
+            ->innerJoin('g.users', 'u')
+            ->andWhere('u.id = ' . $user->getId())
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }
