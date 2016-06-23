@@ -4,21 +4,23 @@
     <div class="well col-lg-12 container">
         <div class="row">
             <div class="col-xs-5 pull-left">
-                <h2 class="col-xs-10">Liste des groupes :</h2>
+                <h2 class="col-xs-10">Liste des Utilisateurs :</h2>
             </div>
         </div>
         <table class="table table-striped">
-            {% if groupes|length > 0  %}
+            {% if users|length > 0  %}
                 <thead>
                 <tr>
-                    <th>Nom du groupe</th>
+                    <th>Nom d'utilisateur</th>
+                    <th>Email</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for groupe in groupes %}
+                {% for user in users %}
                     <tr>
-                        <td>{{ groupe.name }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
                         <td>
                             <div class="row-centered">
                                 <div class="col-centered">
@@ -34,7 +36,7 @@
             {% else %}
                 <br>
                 <div class="alert alert-dismissable alert-info">
-                    Vous ne faites partie d'aucun groupe pour le moment.
+                    Aucun utilisateurs en base
                 </div>
             {% endif %}
         </table>

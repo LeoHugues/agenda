@@ -47,10 +47,20 @@ class User extends BaseUser
      * Un utilisateur peu faire parti de plusieurs groupes
      *
      * @ORM\ManyToMany(targetEntity="ContactBundle\Entity\Groupe", inversedBy="users")
-     * @ORM\JoinTable(name="groupes_users")
+     * @ORM\JoinTable(name="groupes_users_index")
      * @Expose
      */
     private $groupes;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="User")
+     * @ORM\JoinTable(name="friends",
+     *     joinColumns={@ORM\JoinColumn(name="user_a_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="user_b_id", referencedColumnName="id")}
+     * )
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    protected $friends;
 
     /**
      * Un utilisateur peut être intéressé par plusieurs disciplines
@@ -66,6 +76,7 @@ class User extends BaseUser
         parent::__construct();
         $this->groupes = new ArrayCollection();
         $this->discipline = new ArrayCollection();
+        $this->friends = new ArrayCollection();
     }
 
     /**
@@ -122,5 +133,29 @@ class User extends BaseUser
     public function deleteDiscipline($discipline)
     {
         $this->discipline->removeElement($discipline);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getFriends()
+    {
+        return $this->friends;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function addFriend($user)
+    {
+        $this->friends->add($user);
+    }
+
+    /**
+     * @param User $user
+     */
+    public function deleteFriend($user)
+    {
+        $this->friends->removeElement($user);
     }
 }
