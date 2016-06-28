@@ -25,7 +25,6 @@ class CRUDController extends Controller
         
         $users = $em->getRepository('UserBundle:User')->findAll();
         
-        
         return $this->render('UserBundle:CRUD:list.html.twig', array('users' => $users));
     }
 }

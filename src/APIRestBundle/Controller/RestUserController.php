@@ -80,8 +80,8 @@ class RestUserController extends FOSRestController
      *          200="Returned when successful",
      *     },
      *     requirements={
-     *      {"name" = "username", "dataType" = "string", "requirement"="\d+", "description"="nom d'utilisateur"},
-     *      {"name" = "password", "dataType" = "string", "requirement"="\d+", "description"="mot de passe de l'utilisateur"}
+     *      {"name" = "username", "dataType" = "string", "requirement"="obligatoire", "description"="nom d'utilisateur"},
+     *      {"name" = "password", "dataType" = "string", "requirement"="obligatoire", "description"="mot de passe de l'utilisateur"}
      *  },
      * )
      */

@@ -56,6 +56,15 @@ class Comment
      */
     protected $user;
 
+    /**
+     * Receveur
+     *
+     * @var Post
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
+     * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     */
+    protected $post;
+
 
     public function __construct()
     {

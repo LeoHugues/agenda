@@ -71,12 +71,21 @@ class User extends BaseUser
      */
     private $discipline;
 
+    /**
+     * Toutes les demandes d'amis reçu parl'utilisateur;
+     *
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FriendRequest", mappedBy="user")
+     */
+    private $friendRequests;
+
     public function __construct()
     {
         parent::__construct();
         $this->groupes = new ArrayCollection();
         $this->discipline = new ArrayCollection();
         $this->friends = new ArrayCollection();
+        $this->friendRequests = new ArrayCollection();
     }
 
     /**
@@ -157,5 +166,29 @@ class User extends BaseUser
     public function deleteFriend($user)
     {
         $this->friends->removeElement($user);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFriendRequests()
+    {
+        return $this->friendRequests;
+    }
+
+    /**
+     * @param FriendRequest $friendRequest
+     */
+    public function addFriendRequests($friendRequest)
+    {
+        $this->friendRequests->add($friendRequest);
+    }
+
+    /**
+     * @param FriendRequest $friendRequest
+     */
+    public function deleteFriendRequests($friendRequest)
+    {
+        $this->friendRequests->removeElement($friendRequest);
     }
 }

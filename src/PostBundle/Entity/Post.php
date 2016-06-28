@@ -63,8 +63,7 @@ class Post
     /**
      * Tous les commentaires faits pour ce post
      *
-     * @ORM\OneToMany(targetEntity="Comment")
-     * @ORM\Column(nullable=true)
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
      */
     private $comments;
 
