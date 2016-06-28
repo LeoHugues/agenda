@@ -42,12 +42,16 @@ class User extends BaseUser
      * @Expose
      */
     protected $email;
+    
+    protected $groups;
+    
+    protected $roles;
 
     /**
      * Un utilisateur peu faire parti de plusieurs groupes
      *
      * @ORM\ManyToMany(targetEntity="ContactBundle\Entity\Groupe", inversedBy="users")
-     * @ORM\JoinTable(name="groupes_users_index")
+     * @ORM\JoinTable(name="friend_groupes_users_index")
      * @Expose
      */
     private $groupes;
