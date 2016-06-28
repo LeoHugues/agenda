@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dfac47b1-f626-4584-b1d2-ce78b8d333a7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContactBundle/Controller/ContactController.php" afterPath="$PROJECT_DIR$/src/ContactBundle/Controller/ContactController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/Controller/CRUDController.php" afterPath="$PROJECT_DIR$/src/UserBundle/Controller/CRUDController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/Resources/views/CRUD/list.html.twig" afterPath="$PROJECT_DIR$/src/UserBundle/Resources/views/CRUD/list.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/Resources/views/FriendRequest/list.html.twig" afterPath="$PROJECT_DIR$/src/UserBundle/Resources/views/FriendRequest/list.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/UserBundle/Entity/User.php" />
     </list>
     <ignored path="Agenda.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ContactController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ContactController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContactBundle/Controller/ContactController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
+            <state relative-caret-position="1650">
               <caret line="97" column="41" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
               <folding>
                 <element signature="e#124#181#0#PHP" expanded="true" />
@@ -44,8 +41,8 @@
       <file leaf-file-name="FriendRequest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UserBundle/Entity/FriendRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1758">
-              <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
+            <state relative-caret-position="246">
+              <caret line="46" column="91" selection-start-line="46" selection-start-column="72" selection-end-line="46" selection-end-column="91" />
               <folding />
             </state>
           </provider>
@@ -74,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UserBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+            <state relative-caret-position="504">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
                 <element signature="e#37#73#0#PHP" expanded="true" />
               </folding>
@@ -210,12 +207,12 @@
         <option value="$PROJECT_DIR$/src/UserBundle/Entity/FriendRequest.php" />
         <option value="$PROJECT_DIR$/src/APIRestBundle/Controller/RestUserController.php" />
         <option value="$PROJECT_DIR$/src/APIRestBundle/Controller/RestContactController.php" />
-        <option value="$PROJECT_DIR$/src/UserBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/UserBundle/Controller/CRUDController.php" />
         <option value="$PROJECT_DIR$/src/UserBundle/Resources/views/CRUD/list.html.twig" />
         <option value="$PROJECT_DIR$/src/UserBundle/Resources/views/FriendRequest/list.html.twig" />
         <option value="$PROJECT_DIR$/src/UserBundle/Resources/views/CRUD/fiche_user.html.twig" />
         <option value="$PROJECT_DIR$/src/ContactBundle/Controller/ContactController.php" />
+        <option value="$PROJECT_DIR$/src/UserBundle/Entity/User.php" />
       </list>
     </option>
   </component>
@@ -536,12 +533,12 @@
       <workItem from="1466025713341" duration="43000" />
       <workItem from="1466027288099" duration="1388000" />
       <workItem from="1466029032552" duration="62115000" />
-      <workItem from="1467056803969" duration="12764000" />
+      <workItem from="1467056803969" duration="13078000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87540000" />
+    <option name="totallyTimeSpent" value="87854000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -966,16 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
-          <folding>
-            <element signature="e#37#73#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/APIRestBundle/Controller/RestUserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-126">
@@ -1010,21 +997,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserBundle/Entity/FriendRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1758">
-          <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContactBundle/Controller/ContactController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
+        <state relative-caret-position="1650">
           <caret line="97" column="41" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
           <folding>
             <element signature="e#124#181#0#PHP" expanded="true" />
             <element signature="e#1776#1812#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UserBundle/Entity/FriendRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="46" column="91" selection-start-line="46" selection-start-column="72" selection-end-line="46" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UserBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding>
+            <element signature="e#37#73#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

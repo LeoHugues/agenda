@@ -57,7 +57,7 @@ class User extends BaseUser
     private $groupes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User")
+     * @ORM\ManyToMany(targetEntity="User", cascade={"persist"})
      * @ORM\JoinTable(name="friends",
      *     joinColumns={@ORM\JoinColumn(name="user_a_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="user_b_id", referencedColumnName="id")}
