@@ -22,9 +22,20 @@ class CRUDController extends Controller
      */
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        
         $users = $em->getRepository('UserBundle:User')->findAll();
         
         return $this->render('UserBundle:CRUD:list.html.twig', array('users' => $users));
+    }
+    
+    /**
+     * @Route("/users/read/{id}", name="user_read")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function readUserAction(Request $request, $id) {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('UserBundle:User')->find($id);
+        
+        return $this->render('UserBundle:CRUD:fiche_user.html.twig', array('user' => $user));
     }
 }

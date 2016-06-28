@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use UserBundle\Entity\FriendRequest;
+use UserBundle\Entity\User;
 
 class ContactController extends Controller
 {
@@ -90,6 +91,10 @@ class ContactController extends Controller
 
         if ($friendRequest) {
             $friendRequest->setStatus(FriendRequest::COMFIRM);
+            $applicant = $friendRequest->getApplicant();
+            $recipient = $friendRequest->getRecipient();
+            $applicant->addFriend($recipient);
+            $em->persist($applicant);
             $em->persist($friendRequest);
             $em->flush();
 

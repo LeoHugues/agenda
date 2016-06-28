@@ -3,11 +3,27 @@
 {% block content %}
     <div class="well col-lg-12 container">
         <div class="row">
+            <div class="col-xs-9 pull-left">
+                <h2 class="col-xs-10">Fiche de l'Utilisateurs : {{ user.username }}</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-9 pull-left">
+                <br>
+                <label>Nom d'utilisateur :</label> {{ user.username }}
+                <br>
+                <label>Email :</label> {{ user.email }}
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-xs-5 pull-left">
-                <h2 class="col-xs-10">Liste des Utilisateurs :</h2>
+                <h3 class="col-xs-10">Liste de ses amis</h3>
             </div>
         </div>
         <table class="table table-striped">
+            {% set users = user.friends %}
             {% if users|length > 0  %}
                 <thead>
                 <tr>
@@ -22,17 +38,13 @@
                         <td>{{ user.username }}</td>
                         <td>{{ user.email }}</td>
                         <td>
-                            <div class="col-lg-1">
-                                <a href="{{ path('contact_add_friend_request', {'friendId': user.id}) }}">
-                                    <span class="glyphicon glyphicon-plus btn btn-success btn-xs"></span>
-                                </a>
+                            <div class="row-centered">
+                                <div class="col-centered">
+                                    <a href="{{ path('contact_add_friend_request', {'friendId': user.id}) }}">
+                                        <span class="glyphicon glyphicon-plus btn btn-success btn-xs"></span>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="col-lg-1">
-                                <a href="{{ path('user_read', {'id': user.id}) }}">
-                                    <span class="glyphicon glyphicon-eye-open btn btn-default btn-xs"></span>
-                                </a>
-                            </div>
-
                         </td>
                     </tr>
                 {% endfor %}
@@ -40,7 +52,7 @@
             {% else %}
                 <br>
                 <div class="alert alert-dismissable alert-info">
-                    Aucun utilisateurs en base
+                    Aucun amis
                 </div>
             {% endif %}
         </table>
