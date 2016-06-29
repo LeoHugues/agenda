@@ -20,7 +20,7 @@ class Post
     const HOME_WORK_PRIORITY    = 1;
     const EXERCICE_PRIORITY     = 2;
     const TODO_PRIORITY         = 3;
-    const INFORMATION_PRIORITY  = 3;
+    const INFORMATION_PRIORITY  = 4;
 
     /**
      * @var int
@@ -84,7 +84,6 @@ class Post
      * Le groupe dans lequel le poste a été publié | peut être null
      *
      * @ORM\ManyToOne(targetEntity="ContactBundle\Entity\Groupe")
-     * @ORM\Column(nullable=true)
      */
     private $groupe;
 
@@ -92,7 +91,6 @@ class Post
      * Un post peut concerner plusieurs discipline à la fois ex: math / algo / physique.
      *
      * @ORM\ManyToMany(targetEntity="ContactBundle\Entity\Discipline")
-     * @ORM\Column(nullable=true)
      */
     private $discipline;
 
@@ -101,6 +99,7 @@ class Post
     {
         $this->comments = new ArrayCollection();
         $this->discipline = new ArrayCollection();
+        $this->createDate = new \DateTime();
     }
 
     /**

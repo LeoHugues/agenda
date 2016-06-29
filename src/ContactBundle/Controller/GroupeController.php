@@ -82,9 +82,14 @@ class GroupeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $groupe = $em->getRepository('ContactBundle:Groupe')->find($id);
+        $posts = $em->getRepository('PostBundle:Post')->findBy(
+            array('groupe' => $groupe),
+            array('createDate' => 'DESC')
+        );
 
         return $this->render('ContactBundle:groupe:show.html.twig', array(
             'groupe' => $groupe,
+            'posts'   => $posts
         ));
     }
 

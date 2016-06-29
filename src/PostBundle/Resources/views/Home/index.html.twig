@@ -1,41 +1,71 @@
 {% extends "PostBundle::layout.html.twig" %}
 
 {% block content %}
-    <div class="jumbotron">
-        <a href="#" class="visible-xs" data-toggle="offcanvas"><i class="fa fa-lg fa-reorder"></i></a>
-        <h1>Hello, world!</h1>
-        <p>Voici la page d'accueil, le mur d'actualitée sur lequel on verra les posts les plus récent</p>
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="page-header">
+            <h1>Toutes les dates de mon agenda</h1>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-6 col-sm-6 col-lg-4">
-            <h2>Heading</h2>
-            <p>Bootstrap is a front-end framework that uses CSS and JavaScript to facilitate responsive Web design. Bootply is a playground for Bootstrap that enables developers and designers to test, prototype and create mockups using Bootstrap
-                friendly HTML, CSS and Javascript.</p>
-            <p><a class="btn btn-default" href="#">View details »</a></p>
-        </div>
-        <!--/span-->
-        <div class="col-6 col-sm-6 col-lg-4">
-            <h2>Heading</h2>
-            <p>Bootply is a playground for Bootstrap that enables developers and designers to test, prototype and create mockups using Bootstrap friendly HTML, CSS and Javascript. Bootstrap is a front-end framework that uses CSS and JavaScript to
-                facilitate responsive Web design. </p>
-            <p><a class="btn btn-default" href="#">View details »</a></p>
-        </div>
-        <!--/span-->
 
-        <div class="col-6 col-sm-6 col-lg-4">
-            <h2>Heading</h2>
-            <p>Bootstrap is a front-end framework that uses CSS and JavaScript to facilitate responsive Web design. Bootply is a playground for Bootstrap that enables developers and designers to test, prototype and create mockups using Bootstrap
-                friendly HTML, CSS and Javascript.</p>
-            <p><a class="btn btn-default" href="#">View details »</a></p>
-        </div>
-        <!--/span-->
-        <div class="col-6 col-sm-6 col-lg-4">
-            <h2>Heading</h2>
-            <p>Bootstrap is a front-end framework that uses CSS and JavaScript to facilitate responsive Web design. Bootply is a playground for Bootstrap that enables developers and designers to test, prototype and create mockups using Bootstrap
-                friendly HTML, CSS and Javascript.</p>
-            <p><a class="btn btn-default" href="#">View details »</a></p>
-        </div>
-        <!--/span-->
+    <div class="col-lg-8">
+        {% if posts is defined and posts is not null %}
+            {% for post in posts %}
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">{{ post.title }}</div>
+                        <div class="panel-body">
+                            <p>{{ post.description }}</p>
+                        </div>
+
+                        <!-- List group -->
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                Type de post :
+                            </li>
+                            <li class="list-group-item">Pour le        : {{ post.concerneDate|date("m/d/Y") }}</li>
+                            <li class="list-group-item">Auteur         : {{ post.publisher.username }}</li>
+                            <li class="list-group-item">Publié le      : {{ post.createDate|date("m/d/Y") }}</li>
+                            <li class="list-group-item">Dans le groupe : {{ post.groupe.name }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+            {% endfor %}
+        {% else %}
+            <br>
+            <div class="alert alert-dismissable alert-info col-lg-12">
+                Aucune date pour le moment.
+            </div>
+        {% endif %}
     </div>
-    <!--/row-->
+    <div class="well col-lg-4">
+        <div class="pull-left">
+            <h3>
+                Mes groupes
+            </h3>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom du groupe</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for groupe in user.groupes %}
+                <tr>
+                    <td>{{ groupe.name }}</td>
+                    <td>
+                        <div class="col-lg-1">
+                            <a href="{{ path('contact_groupe_detail', {'id': groupe.id}) }}">
+                                <span class="glyphicon glyphicon-eye-open btn btn-default btn-xs"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock content %}

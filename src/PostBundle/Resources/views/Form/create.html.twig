@@ -1,5 +1,50 @@
 {% extends "PostBundle::layout.html.twig" %}
 
 {% block content %}
-    <h1>Hello world</h1>
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="page-header">
+            <h1>Créer un poste dans le groupe : <small>{{ groupe.name }}</small></h1>
+        </div>
+    </div>
+
+    <div class="well col-lg-6 col-lg-offset-1">
+        {{ form_start(form) }}
+        {{ form_end(form) }}
+    </div>
+
+    <div class="well col-lg-offset-1 col-lg-4">
+        <h2 class="text-center">
+            {{ groupe.name }}
+        </h2>
+        <div class="pull-left">
+            <h3>
+                Membres :
+                <a href="{{ path('contact_groupe_get_list_add_member', {'idGroupe': groupe.id}) }}">
+                    <span class="glyphicon glyphicon-plus btn btn-success btn-sm"></span>
+                </a>
+            </h3>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom d'utilisateur</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in groupe.users %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>
+                        <div class="col-lg-1">
+                            <a href="{{ path('user_read', {'id': user.id}) }}">
+                                <span class="glyphicon glyphicon-eye-open btn btn-default btn-xs"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock content %}

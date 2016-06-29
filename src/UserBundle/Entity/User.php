@@ -103,7 +103,7 @@ class User extends BaseUser
     /**
      * @return ArrayCollection
      */
-    public function getGroups()
+    public function getGroupes()
     {
         return $this->groupes;
     }

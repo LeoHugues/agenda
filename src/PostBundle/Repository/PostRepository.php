@@ -3,6 +3,7 @@
 namespace PostBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use PostBundle\Entity\Post;
 
 /**
  * PostRepository
@@ -12,4 +13,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    public function getAgendaByUser($user) {
+        $qb = $this->createQueryBuilder('post');
+        
+        $qb
+            ->join('post.groupe', 'groupe')
+           /* ->join('groupe.users', 'users')
+            ->andWhere('users = ' . $user)
+            ->setParameter('user', $user)*/
+            ->andWhere('post.priority = :test or post.priority = :homeWork or post.priority = :exercice or post.priority = :todo')
+            ->setParameters(array(
+                'test'      => Post::TEST_PRIORITY,
+                'homeWork'  => Post::HOME_WORK_PRIORITY,
+                'exercice'  => Post::EXERCICE_PRIORITY,
+                'todo'      => Post::TODO_PRIORITY,
+            ))
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }
