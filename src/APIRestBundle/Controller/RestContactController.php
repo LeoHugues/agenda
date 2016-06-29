@@ -14,6 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation as Doc;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
@@ -79,11 +80,11 @@ class RestContactController extends FOSRestController
      */
     public function listFriendRequestAction() {
         $em = $this->getDoctrine()->getManager();
-        $friendsRequest = $em->getRepository('UserBundle:FriendRequest')->findBy(array(
+        $friendsRequest = $em->getRepository('ContactBundle:FriendRequest')->findBy(array(
             'recipient' => $this->getUser(),
         ));
 
-        return $this->render('@User/FriendRequest/list.html.twig', array('friendsRequest' => $friendsRequest));
+        return $this->render('ContactBundle:friend/request:list.html.twig', array('friendsRequest' => $friendsRequest));
     }
 
     /**
@@ -94,7 +95,7 @@ class RestContactController extends FOSRestController
      */
     public function removeFriendRequestAction(Request $request, $requestId) {
         $em = $this->getDoctrine()->getManager();
-        $friendRequest = $em->getRepository('UserBundle:FriendRequest')->find($requestId);
+        $friendRequest = $em->getRepository('ContactBundle:FriendRequest')->find($requestId);
 
         if ($friendRequest) {
             $em->remove($friendRequest);
@@ -139,7 +140,7 @@ class RestContactController extends FOSRestController
      */
     public function rejectFriendRequestAction(Request $request, $requestId) {
         $em = $this->getDoctrine()->getManager();
-        $friendRequest = $em->getRepository('UserBundle:FriendRequest')->find($requestId);
+        $friendRequest = $em->getRepository('ContactBundle:FriendRequest')->find($requestId);
 
         if ($friendRequest) {
             $friendRequest->setStatus(FriendRequest::REJECT);

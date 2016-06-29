@@ -16,6 +16,12 @@ use FOS\UserBundle\Model\Group;
  */
 class Post
 {
+    const TEST_PRIORITY         = 0;
+    const HOME_WORK_PRIORITY    = 1;
+    const EXERCICE_PRIORITY     = 2;
+    const TODO_PRIORITY         = 3;
+    const INFORMATION_PRIORITY  = 3;
+
     /**
      * @var int
      *

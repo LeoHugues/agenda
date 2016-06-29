@@ -1,0 +1,70 @@
+{% extends "PostBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="well col-lg-12 container">
+        <div class="row">
+            <div class="col-xs-5 pull-left">
+                <h2 class="col-xs-10">Invitations : <span class="label label-default">{{ membersRequest|length }}</span></h2>
+            </div>
+        </div>
+        <table class="table table-striped">
+            {% if membersRequest|length > 0  %}
+                <thead>
+                <tr>
+                    <th>Nom d'utilisateur</th>
+                    <th>Email</th>
+                    <th>Date de la demande</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for memberRequest in membersRequest %}
+                    {% set user = memberRequest.applicant %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ memberRequest.createDate|date("F jS \\a\\t g:ia") }}</td>
+                        <td>
+                            {% if memberRequest.status == constant('WAITING', memberRequest) %}
+                                <span class="label label-info">En attente</span>
+                            {% elseif memberRequest.status == constant('COMFIRM', memberRequest) %}
+                                <span class="label label-success">Accepté</span>
+                            {% elseif memberRequest.status == constant('REJECT', memberRequest) %}
+                                <span class="label label-danger">Rejeté</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <div class="col-lg-1">
+                                <a href="{{ path('contact_accept_member_request', {'requestId': memberRequest.id}) }}">
+                                    <span class="glyphicon glyphicon-plus btn btn-success btn-xs"></span>
+                                </a>
+                            </div>
+                            <div class="col-lg-1">
+                                <a href="{{ path('contact_reject_member_request', {'requestId': memberRequest.id}) }}">
+                                    <span class="glyphicon glyphicon-minus btn btn-warning btn-xs"></span>
+                                </a>
+                            </div>
+                            <div class="col-lg-1">
+                                <a href="{{ path('contact_remove_member_request', {'requestId': memberRequest.id}) }}">
+                                    <span class="glyphicon glyphicon-remove btn btn-danger btn-xs"></span>
+                                </a>
+                            </div>
+                            <div class="col-lg-1">
+                                <a href="{{ path('contact_groupe_detail', {'id': memberRequest.groupe.id}) }}">
+                                    <span class="glyphicon glyphicon-eye-open btn btn-default btn-xs"></span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            {% else %}
+                <br>
+                <div class="alert alert-dismissable alert-info">
+                    Vous n'avez reçu aucune invitation pour le moment
+                </div>
+            {% endif %}
+        </table>
+    </div>
+{% endblock content %}

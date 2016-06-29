@@ -35,12 +35,16 @@
                 <div class="sidebar-nav">
                     <ul class="nav">
                         <li class="active"><a href="{{ path("post_index_list") }}">Accueil</a></li>
+                        <li class="nav-divider"></li>
+                        <li><h3>Groupes</h3></li>
                         <li><a href="{{ path("contact_groupe_list") }}">Liste des groupes</a></li>
                         <li><a href="{{ path("contact_groupe_add") }}">Ajouter un groupe</a></li>
+                        <li><a href="{{ path("contact_groupe_list_members_request") }}">Invitations</a></li>
                         <li class="nav-divider"></li>
+                        <li><h3>Utilisateurs</h3></li>
                         <li><a href="{{ path('user_list') }}">Utilisateurs</a></li>
                         <li><a href="{{ path('contact_list_friend_request') }}">Demande d'amis</a></li>
-                        <li><a href="#">Link</a></li>
+                        <li><a href="{{ path('contact_list_friend') }}">Mes amis</a></li>
                         <li class="nav-divider"></li>
                         <li><a href="#">Link</a></li>
                         <li><a href="#">Link</a></li>

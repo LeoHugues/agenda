@@ -1,0 +1,54 @@
+{% extends "PostBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="col-lg-12 container">
+        <div class="row">
+            <div class="col-xs-5 pull-left">
+                <h2 class="col-xs-10">{{ groupe.name }} : {{ groupe.users|length }} membres</h2>
+            </div>
+            <div class="col-xs-3 right">
+                Administrateur : {{ groupe.admin.username }}
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="jumbotron">
+                <a href="#" class="visible-xs" data-toggle="offcanvas"><i class="fa fa-lg fa-reorder"></i></a>
+                <h1>Hello, world!</h1>
+                <p>Voici la du groupe, le mur d'actualitée sur lequel on verra les posts les plus récent</p>
+            </div>
+        </div>
+        <div class="well col-lg-4">
+            <div class="pull-left">
+                <h3>
+                    Membres :
+                    <a href="{{ path('contact_groupe_get_list_add_member', {'idGroupe': groupe.id}) }}">
+                        <span class="glyphicon glyphicon-plus btn btn-success btn-sm"></span>
+                    </a>
+                </h3>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nom d'utilisateur</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in groupe.users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>
+                            <div class="col-lg-1">
+                                <a href="{{ path('user_read', {'id': user.id}) }}">
+                                    <span class="glyphicon glyphicon-eye-open btn btn-default btn-xs"></span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

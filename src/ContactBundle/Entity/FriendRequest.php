@@ -6,15 +6,16 @@
  * Time: 9:49 PM
  */
 
-namespace UserBundle\Entity;
+namespace ContactBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\User;
 
 /**
  * FriendRequest
  *
  * @ORM\Table(name="friend_request")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="ContactBundle\Repository\FriendRequestRepository")
  */
 class FriendRequest
 {
@@ -44,7 +45,7 @@ class FriendRequest
      * Receveur
      * 
      * @var User
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="friendRequests", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="friendRequests", cascade={"persist"})
      * @ORM\JoinColumn(name="recipient_id", referencedColumnName="id")
      */
     protected $recipient;

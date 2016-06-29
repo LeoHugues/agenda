@@ -50,7 +50,7 @@ class User extends BaseUser
     /**
      * Un utilisateur peu faire parti de plusieurs groupes
      *
-     * @ORM\ManyToMany(targetEntity="ContactBundle\Entity\Groupe", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="ContactBundle\Entity\Groupe", inversedBy="users", cascade={"remove"})
      * @ORM\JoinTable(name="friend_groupes_users_index")
      * @Expose
      */
@@ -76,10 +76,10 @@ class User extends BaseUser
     private $discipline;
 
     /**
-     * Toutes les demandes d'amis reçu parl'utilisateur;
+     * Toutes les demandes d'amis reçu par l'utilisateur;
      *
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="FriendRequest", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="ContactBundle\Entity\FriendRequest", mappedBy="user")
      */
     private $friendRequests;
 
