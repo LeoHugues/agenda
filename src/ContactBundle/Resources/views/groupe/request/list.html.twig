@@ -1,10 +1,15 @@
 {% extends "PostBundle::layout.html.twig" %}
 
 {% block content %}
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="page-header">
+            <h1 class="col-xs-10">Invitations : <span class="label label-default">{{ membersRequest|length }}</span></h1>
+        </div>
+    </div>
     <div class="well col-lg-12 container">
         <div class="row">
             <div class="col-xs-5 pull-left">
-                <h2 class="col-xs-10">Invitations : <span class="label label-default">{{ membersRequest|length }}</span></h2>
+                </h2>
             </div>
         </div>
         <table class="table table-striped">
@@ -14,6 +19,7 @@
                     <th>Nom d'utilisateur</th>
                     <th>Email</th>
                     <th>Date de la demande</th>
+                    <th>Nom du groupe</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -25,6 +31,7 @@
                         <td>{{ user.username }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ memberRequest.createDate|date("F jS \\a\\t g:ia") }}</td>
+                        <td>{{ memberRequest.groupe.name }}</td>
                         <td>
                             {% if memberRequest.status == constant('WAITING', memberRequest) %}
                                 <span class="label label-info">En attente</span>

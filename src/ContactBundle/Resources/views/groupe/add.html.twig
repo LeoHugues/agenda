@@ -1,10 +1,43 @@
 {% extends "PostBundle::layout.html.twig" %}
 
 {% block content %}
-    <div class="col-lg-6">
-        <h1>Créer un nouveau groupe</h1>
-        <br>
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="page-header">
+            <h1>Créer un nouveau groupe</h1>
+        </div>
+    </div>
+    <div class="well col-lg-6 col-lg-offset-1">
         {{ form_start(form) }}
         {{ form_end(form) }}
+    </div>
+
+    <div class="well col-lg-offset-1 col-lg-4">
+        <div class="pull-left">
+            <h3>
+                Mes groupes
+            </h3>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom du groupe</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for groupe in user.groupes %}
+                <tr>
+                    <td>{{ groupe.name }}</td>
+                    <td>
+                        <div class="col-lg-1">
+                            <a href="{{ path('contact_groupe_detail', {'id': groupe.id}) }}">
+                                <span class="glyphicon glyphicon-eye-open btn btn-default btn-xs"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock content %}

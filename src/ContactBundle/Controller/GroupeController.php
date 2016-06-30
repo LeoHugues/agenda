@@ -47,6 +47,7 @@ class GroupeController extends Controller
      */
     public function groupeAddAction(Request $request)
     {
+        $user = $this->getUser();
         $form = $this->createForm(new GroupeType(), new Groupe());
         $form->add('ajouter', 'submit');
 
@@ -56,7 +57,6 @@ class GroupeController extends Controller
             /** @var Groupe $groupe */
             $groupe = $form->getData();
             /** @var User $user */
-            $user = $this->getUser();
             $groupe->setAdmin($user);
             $groupe->addUser($user);
             $user->addGroupe($groupe);
@@ -71,7 +71,8 @@ class GroupeController extends Controller
         }
         
         return $this->render('ContactBundle:groupe:add.html.twig', array(
-            'form' => $form->createView(),
+            'form'    => $form->createView(),
+            'user' => $user,
         ));
     }
 

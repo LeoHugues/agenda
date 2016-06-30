@@ -25,7 +25,7 @@ class PostController extends Controller
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $posts = $em->getRepository('PostBundle:Post')->getAgendaByUser($user);
+        $posts = $em->getRepository('PostBundle:Post')->findAll();
 
         return $this->render("PostBundle:Home:index.html.twig", array(
             'user'  => $user,
@@ -34,23 +34,40 @@ class PostController extends Controller
     }
 
     /**
+     * @Route("/agenda/all", name="post_agenda_all")
+     */
+    public function getAgendaAction() {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $posts = $em->getRepository('PostBundle:Post')->getAgendaByUser($user);
+
+        return $this->render("PostBundle:Agenda:all.html.twig", array(
+            'user'  => $user,
+            'posts' => $this->getGoodPost($posts, $user),
+        ));
+    }
+    /**
      * @param $posts ArrayCollection
      * @param $user  User
      * @return ArrayCollection
      */
     private function getGoodPost($posts, $user) {
-        $result = new ArrayCollection();
+        if ($user) {
+            $result = new ArrayCollection();
 
-        /**
-         * @var Post $post
-         */
-        foreach ($posts as $post) {
-            if ($post->getGroupe()->getUsers()->contains($user)) {
-                $result->add($post);
+            /**
+             * @var Post $post
+             */
+            foreach ($posts as $post) {
+                if ($post->getGroupe()->getUsers()->contains($user)) {
+                    $result->add($post);
+                }
             }
-        }
 
-        return $result;
+            return $result;
+        } else {
+            return null;
+        }
     }
 
     /**
