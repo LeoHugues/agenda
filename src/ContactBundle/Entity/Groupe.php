@@ -40,6 +40,11 @@ class Groupe
      */
     private $admin;
 
+    /**
+     * @ORM\OneToMany(targetEntity="PostBundle\Entity\Post", mappedBy="groupe", cascade={"remove"})
+     */
+    private $posts;
+
 
     public function __construct()
     {

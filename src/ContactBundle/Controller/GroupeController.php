@@ -59,7 +59,7 @@ class GroupeController extends Controller
             $user = $this->getUser();
             $groupe->setAdmin($user);
             $groupe->addUser($user);
-            $user->getGroups()->add($groupe);
+            $user->addGroupe($groupe);
             $em = $this->getDoctrine()->getManager();
             $em->persist($groupe);
             $em->persist($user);

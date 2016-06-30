@@ -83,7 +83,8 @@ class Post
     /**
      * Le groupe dans lequel le poste a été publié | peut être null
      *
-     * @ORM\ManyToOne(targetEntity="ContactBundle\Entity\Groupe")
+     * @ORM\ManyToOne(targetEntity="ContactBundle\Entity\Groupe", inversedBy="posts")
+     * @ORM\JoinColumn(name="groupe_id", referencedColumnName="id")
      */
     private $groupe;
 
@@ -91,6 +92,7 @@ class Post
      * Un post peut concerner plusieurs discipline à la fois ex: math / algo / physique.
      *
      * @ORM\ManyToMany(targetEntity="ContactBundle\Entity\Discipline")
+     * @ORM\Column(nullable=true)
      */
     private $discipline;
 
