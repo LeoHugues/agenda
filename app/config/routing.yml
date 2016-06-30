@@ -8,6 +8,11 @@ Rest_User :
   resource: "@APIRestBundle/Resources/config/routing_rest.yml"
   prefix: /api
 
+Rest_Post :
+  type : rest
+  resource: "@APIRestBundle/Resources/config/routing_rest.yml"
+  prefix: /api
+
 contact:
     resource: "@ContactBundle/Controller/"
     type:     annotation

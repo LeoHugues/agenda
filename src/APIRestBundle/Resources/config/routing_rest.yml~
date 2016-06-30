@@ -1,0 +1,5 @@
+concierge:
+   type: rest
+   resource:    "APIRestBundle:RestUser"
+   prefix: /
+   name_prefix: "api_"

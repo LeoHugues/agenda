@@ -3,3 +3,12 @@ concierge:
    resource:    "APIRestBundle:RestUser"
    prefix: /
    name_prefix: "api_"
+
+post:
+   type: rest
+   resource:    "APIRestBundle:RestPost"
+   prefix: /
+   name_prefix: "api_"
+
+
+
